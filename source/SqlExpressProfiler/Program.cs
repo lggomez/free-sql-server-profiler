@@ -1,8 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Reflection;
-using System.Windows.Forms;
 using AnfiniL.SqlExpressProfiler.Controls;
+using System;
+using System.Windows.Forms;
 
 namespace AnfiniL.SqlExpressProfiler
 {

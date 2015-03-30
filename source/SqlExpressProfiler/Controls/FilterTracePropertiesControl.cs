@@ -1,12 +1,9 @@
+using AnfiniL.SqlServerTools.Data;
+using SqlServerTools.Data;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
 using System.Data;
-using System.Text;
 using System.Windows.Forms;
-using SqlServerTools.Data;
-using AnfiniL.SqlServerTools.Data;
 
 namespace AnfiniL.SqlExpressProfiler.Controls
 {

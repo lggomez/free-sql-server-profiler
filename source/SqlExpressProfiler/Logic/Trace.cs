@@ -1,10 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
-using SqlServerTools;
-using System.Data;
-using SqlServerTools.Data;
 using AnfiniL.SqlServerTools.Data;
+using SqlServerTools;
+using SqlServerTools.Data;
+using System;
+using System.Data;
 
 namespace AnfiniL.SqlExpressProfiler.Logic
 {

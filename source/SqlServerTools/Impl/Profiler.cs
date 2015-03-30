@@ -1,15 +1,12 @@
+using AnfiniL.SqlServerTools.Data;
+using AnfiniL.SqlServerTools.Impl;
+using SqlServerTools.Data;
+using SqlServerTools.Exceptions;
 using System;
 using System.Collections.Generic;
-using System.Text;
-using System.Collections;
-using AnfiniL.SqlServerTools.Impl;
-using Microsoft.SqlServer.Management.Common;
-using SqlServerTools.Data;
-using System.Data.SqlClient;
-using SqlServerTools.Exceptions;
-using System.Threading;
 using System.Data;
-using AnfiniL.SqlServerTools.Data;
+using System.Data.SqlClient;
+using System.Threading;
 
 namespace SqlServerTools.Impl
 {

@@ -1,8 +1,8 @@
-using System;
-using System.Windows.Forms;
 using AnfiniL.SqlExpressProfiler.Properties;
 using AnfiniL.SqlServerTools;
 using SqlServerTools;
+using System;
+using System.Windows.Forms;
 
 namespace AnfiniL.SqlExpressProfiler.Controls
 {

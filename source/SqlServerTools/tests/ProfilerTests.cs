@@ -1,12 +1,12 @@
-using System;
-using System.Data;
-using System.IO;
-using System.Threading;
 using AnfiniL.SqlServerTools.Impl;
 using Microsoft.SqlServer.Management.Common;
 using NUnit.Framework;
 using SqlServerTools.Data;
 using SqlServerTools.Impl;
+using System;
+using System.Data;
+using System.IO;
+using System.Threading;
 
 namespace SqlServerTools.tests
 {

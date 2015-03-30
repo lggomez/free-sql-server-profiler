@@ -1,11 +1,9 @@
+using Microsoft.SqlServer.Management.Common;
+using Microsoft.SqlServer.Management.Smo;
 using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Text;
-using Microsoft.SqlServer.Management.Smo;
 using System.Data;
-using Microsoft.SqlServer.Management.Common;
-using ServerType=Microsoft.SqlServer.Management.Common.ServerType;
+using System.Data.SqlClient;
 
 namespace AnfiniL.SqlServerTools.Impl
 {

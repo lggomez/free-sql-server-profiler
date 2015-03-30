@@ -1,12 +1,12 @@
-using System;
-using System.Windows.Forms;
 using AnfiniL.SqlExpressProfiler.Controls;
 using AnfiniL.SqlExpressProfiler.Logic;
+using AnfiniL.SqlExpressProfiler.Properties;
 using AnfiniL.SqlExpressProfiler.VisualStyles;
 using AnfiniL.SqlServerTools.Data;
 using FarsiLibrary.Win;
 using SqlServerTools.Data;
-using AnfiniL.SqlExpressProfiler.Properties;
+using System;
+using System.Windows.Forms;
 
 namespace AnfiniL.SqlExpressProfiler
 {

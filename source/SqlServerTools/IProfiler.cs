@@ -1,8 +1,6 @@
-using System;
-using System.Data;
-using System.Collections;
-using SqlServerTools.Data;
 using AnfiniL.SqlServerTools.Data;
+using SqlServerTools.Data;
+using System;
 
 namespace SqlServerTools
 {

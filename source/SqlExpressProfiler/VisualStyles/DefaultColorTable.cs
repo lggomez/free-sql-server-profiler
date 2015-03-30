@@ -1,3 +1,4 @@
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -6,7 +7,6 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
-using Microsoft.Win32;
 
 namespace AnfiniL.SqlExpressProfiler.VisualStyles
 {
@@ -684,7 +684,6 @@ namespace AnfiniL.SqlExpressProfiler.VisualStyles
 
 
             // Properties
-
             public static string ColorScheme
             {
                 get { return colorScheme; }

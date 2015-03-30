@@ -1,15 +1,14 @@
+using AnfiniL.SqlExpressProfiler.Properties;
+using AnfiniL.SqlServerTools.Data;
+using AnjLab.FX.System;
+using SqlServerTools;
+using SqlServerTools.Data;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.IO;
-using System.Windows.Forms;
-using AnfiniL.SqlExpressProfiler.Properties;
-//using AnjLab.FX.System;
-using SqlServerTools;
-using SqlServerTools.Data;
-using AnfiniL.SqlServerTools.Data;
 using System.Text;
-using AnjLab.FX.System;
+using System.Windows.Forms;
 
 namespace AnfiniL.SqlExpressProfiler.Logic
 {

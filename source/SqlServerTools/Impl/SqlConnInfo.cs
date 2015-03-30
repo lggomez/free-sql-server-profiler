@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Microsoft.SqlServer.Management.Common;
 using System.Data;
-using System.Data.SqlClient;
-using System.Text;
-using Microsoft.SqlServer.Management.Common;
 
 namespace AnfiniL.SqlServerTools.Impl
 {

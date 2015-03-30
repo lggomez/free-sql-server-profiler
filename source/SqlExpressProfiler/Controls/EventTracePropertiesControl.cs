@@ -1,11 +1,10 @@
+using AnfiniL.SqlExpressProfiler.Logic;
+using AnjLab.FX.System;
+using SqlServerTools.Data;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
-//using AnfiniL.FX.System;
-using SqlServerTools.Data;
-using AnfiniL.SqlExpressProfiler.Logic;
-using AnjLab.FX.System;
 
 namespace AnfiniL.SqlExpressProfiler.Controls
 {
