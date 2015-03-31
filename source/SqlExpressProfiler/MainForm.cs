@@ -111,7 +111,7 @@ namespace AnfiniL.SqlExpressProfiler
             TracePropertiesForm tpf = new TracePropertiesForm();
             tpf.StartPosition = FormStartPosition.CenterScreen;
 
-            if(tpf.ShowDialog() == DialogResult.OK)
+            if (tpf.ShowDialog() == DialogResult.OK)
             {
                 if (!permission(tpf))
                     System.Windows.Forms.MessageBox.Show(string.Format("'{0}' has no correct permission.", tpf.Username),
@@ -136,7 +136,7 @@ namespace AnfiniL.SqlExpressProfiler
 
         private void tabStrip_TabStripItemSelectionChanged(TabStripItemChangedEventArgs e)
         {
-            if(e.ChangeType == FATabStripItemChangeTypes.SelectionChanged)
+            if (e.ChangeType == FATabStripItemChangeTypes.SelectionChanged)
             {
                 CurrentTrace = GetCurrentTrace();
                 EnableToolStripButtons();
@@ -186,7 +186,7 @@ namespace AnfiniL.SqlExpressProfiler
         {
             if (CurrentTrace == null) return;
             
-            if(CurrentTrace.Profiler.Status == TraceStatus.Closed)
+            if (CurrentTrace.Profiler.Status == TraceStatus.Closed)
             {
                 SetCurrentTrace(_traceManager.RunProfiler(CurrentTrace.Profiler));
                 return;
@@ -232,7 +232,7 @@ namespace AnfiniL.SqlExpressProfiler
             if (CurrentTrace == null) return;
 
             StatusErrorCode errorCode = CurrentTrace.Profiler.Stop();
-            if(errorCode == StatusErrorCode.TraceIsInvalid)
+            if (errorCode == StatusErrorCode.TraceIsInvalid)
             {
                 MessageBox.Show("Could not find the trace. Please close the trace and start a new.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -255,7 +255,7 @@ namespace AnfiniL.SqlExpressProfiler
             bool result = !StopCurrentTrace();
             e.Cancel = result;
             
-            if(!result && trace != null)
+            if (!result && trace != null)
                 _traceManager.DeleteProfiler(trace.Profiler);
             
         }
@@ -296,7 +296,7 @@ namespace AnfiniL.SqlExpressProfiler
         private void clearToolStripButton_Click(object sender, EventArgs e)
         {
             Trace trace = CurrentTrace;
-            if(trace != null)
+            if (trace != null)
             {
                 trace.ClearTrace();
             }

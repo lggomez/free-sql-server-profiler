@@ -13,11 +13,14 @@ namespace SqlServerTools.Impl
     class Profiler : IProfiler
     {
         private Timer             getTraceTimer;
-        private SqlConnInfo connInfo;
+        private SqlConnInfo       connInfo;
         private int               traceId = 0;
         private string            traceFilePath;
         private TraceStatus       traceStatus;
         private List<string>      traceFields = new List<string>();
+
+        object syncObj =          new object();
+        int lastRowNum =          0;
 
         private static int TraceCounter = 0;
 
@@ -86,14 +89,15 @@ namespace SqlServerTools.Impl
             string file = traceFile;
             int fileIndex = 0;
             string masterFileName = GetMasterDatabaseFullPath();
+
             if (!string.IsNullOrEmpty(masterFileName))
             {
-              while (TraceExists(masterFileName + "." + file + ".trc"))
-              {
-                file = traceFile + fileIndex++;
-              }
+                while (TraceExists(masterFileName + "." + file + ".trc"))
+                {
+                    file = traceFile + fileIndex++;
+                }
 
-              return InitTrace(traceOptions, masterFileName + "." + file, maxFileSize, stopTime);
+                return InitTrace(traceOptions, masterFileName + "." + file, maxFileSize, stopTime);
             }
             else
             {
@@ -106,6 +110,7 @@ namespace SqlServerTools.Impl
             SqlCommand cmd = MsSqlUtil.NewQuery("select count(*) from sys.traces where path = @tracePath");
             MsSqlUtil.AddInParam(cmd, "@tracePath", tracePath);
             int count = (int)MsSqlUtil.ExecuteScalar(cmd, connInfo.CreateConnectionObject());
+
             return count > 0;
         }
 
@@ -116,6 +121,7 @@ namespace SqlServerTools.Impl
             SqlCommand cmd = MsSqlUtil.NewQuery("use master\r\n\r\nselect top 1 rtrim([physical_name])\r\n  from sys.database_files\r\n where file_id = 1");
             string masterFullPath = string.Empty;
             masterFullPath = MsSqlUtil.ExecuteScalar(cmd, connInfo.CreateConnectionObject()) as string;
+
             return masterFullPath;
         }
 
@@ -125,9 +131,9 @@ namespace SqlServerTools.Impl
             SqlParameter tId = MsSqlUtil.AddOutParam(cmd, "@traceid", traceId);
             MsSqlUtil.AddInParam(cmd, "@options", (int)traceOptions);
             MsSqlUtil.AddInParam(cmd, "@tracefile", traceFilePath);
-            if(maxFileSize != null)
+            if (maxFileSize != null)
                 MsSqlUtil.AddInParam(cmd, "@maxfilesize", maxFileSize);
-            if(stopTime != null)
+            if (stopTime != null)
                 MsSqlUtil.AddInParam(cmd, "@stoptime", stopTime);
             
             int result = MsSqlUtil.ExecuteStoredProcedure(cmd, connInfo.CreateConnectionObject());
@@ -154,7 +160,7 @@ namespace SqlServerTools.Impl
                 MsSqlUtil.AddInParam(cmd, "@on", true);
                 MsSqlUtil.ExecuteStoredProcedure(cmd, connInfo.CreateConnectionObject());
 
-                if(!this.traceFields.Contains(field.ToString()))
+                if (!this.traceFields.Contains(field.ToString()))
                     this.traceFields.Add(field.ToString());
             }
 
@@ -172,16 +178,19 @@ namespace SqlServerTools.Impl
             MsSqlUtil.AddInParam(cmd, "@logical_operator", (int)logicalOp);
             MsSqlUtil.AddInParam(cmd, "@comparison_operator", (int)compOp);            
             MsSqlUtil.AddInParam(cmd, "@value", value);
+
             return (AddTraceFilterErrorCode)MsSqlUtil.ExecuteStoredProcedure(cmd, connInfo.CreateConnectionObject());
         }
 
         public StatusErrorCode Start()
         {
             StatusErrorCode result =  SetTraceStatus(TraceStatus.Started);
+
             if (result == StatusErrorCode.NoError)
             {
-                getTraceTimer = new Timer(new TimerCallback(GetTraceTable), null, new TimeSpan(0,0,0), RefreshInterval);
+                getTraceTimer = new Timer(GetTraceTable, null, new TimeSpan(0,0,0), RefreshInterval);
             }
+
             return result;
         }
 
@@ -198,6 +207,7 @@ namespace SqlServerTools.Impl
                 MsSqlUtil.AddInParam(cmd, "@traceid", traceId);
                 MsSqlUtil.AddInParam(cmd, "@status", status);
                 code = (StatusErrorCode) MsSqlUtil.ExecuteStoredProcedure(cmd, connInfo.CreateConnectionObject());
+
                 if (code == StatusErrorCode.NoError)
                     this.traceStatus = status;
             }
@@ -207,8 +217,6 @@ namespace SqlServerTools.Impl
                 {
                     return StatusErrorCode.TraceIsInvalid;
                 }
-
-                //throw;
             }
 
             return code;
@@ -227,12 +235,9 @@ namespace SqlServerTools.Impl
 
         void OnTraceEvent(DataTable eventsTable)
         {
-            if(TraceEvent != null)
+            if (TraceEvent != null)
                 TraceEvent(this, new TraceEventArgs(eventsTable));
         }
-
-        object syncObj = new object();
-        int lastRowNum = 0;
 
         void GetTraceTable(object sender)
         {
@@ -249,7 +254,7 @@ namespace SqlServerTools.Impl
                     MsSqlUtil.AddInParam(cmd, "@lastrownum", lastRowNum);
                     DataTable table = MsSqlUtil.ExecuteAsDataTable(cmd, connInfo.CreateConnectionObject());
                     
-                    if(table.Rows.Count > 0)
+                    if (table.Rows.Count > 0)
                         lastRowNum = Convert.ToInt32(table.Compute("max(RowNum)", string.Empty));
 
                     Monitor.Exit(syncObj);
@@ -269,7 +274,7 @@ namespace SqlServerTools.Impl
         {
             if (traceStatus == TraceStatus.Started)
                 Stop();
-            if(traceStatus == TraceStatus.Stopped)
+            if (traceStatus == TraceStatus.Stopped)
                 Close();
         }
 
@@ -277,10 +282,9 @@ namespace SqlServerTools.Impl
 
         public IProfiler Copy()
         {
-            Profiler copy = new Profiler(this.connInfo);
-            copy.traceFilePath = this.traceFilePath;
+            Profiler copy = new Profiler(this.connInfo) { traceFilePath = this.traceFilePath };
+
             return copy;
         }
-
     }
 }

@@ -9,15 +9,12 @@ namespace AnfiniL.SqlServerTools.Impl
 
         public delegate IDbConnection CreateConnectionHandler();
 
-        private CreateConnectionHandler _handler;
+        private readonly CreateConnectionHandler _handler;
 
         public SqlConnInfo(SqlConnectionInfo info)
         {
             info.ApplicationName = ApplicationName;
-            _handler = delegate
-                           {
-                               return info.CreateConnectionObject();
-                           };
+            _handler = info.CreateConnectionObject;
         }
 
         public SqlConnInfo(CreateConnectionHandler handler)

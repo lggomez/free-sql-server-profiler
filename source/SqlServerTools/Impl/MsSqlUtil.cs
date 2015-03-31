@@ -10,6 +10,7 @@ namespace SqlServerTools.Impl
         {
             SqlCommand cmd = new SqlCommand(name);
             cmd.CommandType = CommandType.StoredProcedure;
+
             return cmd;
         }
 
@@ -17,6 +18,7 @@ namespace SqlServerTools.Impl
         {
             SqlCommand cmd = new SqlCommand(query);
             cmd.CommandType = CommandType.Text;
+
             return cmd;
         }
 
@@ -41,6 +43,7 @@ namespace SqlServerTools.Impl
         {            
             cmd.Connection = (SqlConnection)conn;
             conn.Open();
+
             try
             {
                 DataTable table = new DataTable();
@@ -73,6 +76,7 @@ namespace SqlServerTools.Impl
             SqlParameter param = new SqlParameter();
             param.ParameterName = name;
             param.Direction = ParameterDirection.Input;
+
             if (value != null)
             {
                 if (System.Text.RegularExpressions.Regex.Match(value.ToString(), @"^\d+").Success)
@@ -95,25 +99,27 @@ namespace SqlServerTools.Impl
             SqlParameter param = new SqlParameter();
             param.ParameterName = name;
             param.Direction = ParameterDirection.Output;
+
             if (value != null)
                 param.Value = value;
             else
                 param.DbType = MapType(typeof(T));
             cmd.Parameters.Add(param);
+
             return param;
         }
 
         private static SqlParameter AddReturnParam(SqlCommand cmd)
         {
-            SqlParameter param = new SqlParameter();
-            param.Direction = ParameterDirection.ReturnValue;
+            SqlParameter param = new SqlParameter { Direction = ParameterDirection.ReturnValue };
             cmd.Parameters.Add(param);
+
             return param;
         }
 
         private static DbType MapType(Type T)
         {
-            if (typeof(DateTime).Equals(T) || typeof(DateTime?).Equals(T))
+            if (typeof(DateTime) == T || typeof(DateTime?) == T)
                 return DbType.DateTime;
             else
                 return DbType.String;

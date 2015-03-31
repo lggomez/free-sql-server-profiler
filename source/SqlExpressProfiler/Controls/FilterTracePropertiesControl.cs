@@ -16,6 +16,7 @@ namespace AnfiniL.SqlExpressProfiler.Controls
             InitializeComponent();
 
             if (Program.InDesignMode) return;
+
             InitDataGrid();
         }
         
@@ -24,9 +25,10 @@ namespace AnfiniL.SqlExpressProfiler.Controls
             get
             {
                 List<FilterProperties> filters = new List<FilterProperties>();
+
                 foreach (DataRow dr in _source.Rows)
                 {
-                    if(string.IsNullOrEmpty(dr["Operator"] as string))
+                    if (string.IsNullOrEmpty(dr["Operator"] as string))
                         continue;
                         
                     filters.Add(GetFilterProperties(dr));
@@ -70,6 +72,7 @@ namespace AnfiniL.SqlExpressProfiler.Controls
 
             List<string> operators = new List<string>();
             operators.Add(string.Empty);
+
             foreach (ComparisonOperator op in Enum.GetValues(typeof(ComparisonOperator)))
                 operators.Add(op.ToString());
 
@@ -82,10 +85,11 @@ namespace AnfiniL.SqlExpressProfiler.Controls
 
         private void dataGridView_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            if(e.ColumnIndex == _source.Columns["Value"].Ordinal)
+            if (e.ColumnIndex == _source.Columns["Value"].Ordinal)
             {                
                 string error = FilterProperties.CheckFilter(GetFilterProperties(_source.Rows[e.RowIndex]));
-                if(!string.IsNullOrEmpty(error))
+
+                if (!string.IsNullOrEmpty(error))
                 {
                     MessageBox.Show("Wrong value: " + error, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     _source.Rows[e.RowIndex]["Value"] = null;

@@ -50,9 +50,8 @@ namespace Attech.FlightMonitor.UI.Controls
 
         private void selectButton_Click(object sender, EventArgs e)
         {
-            OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Filter = _filter;
-            ofd.RestoreDirectory = true;
+            OpenFileDialog ofd = new OpenFileDialog { Filter = _filter, RestoreDirectory = true };
+
             if (ofd.ShowDialog() == DialogResult.OK)
             {
                 pathTextBox.Text = ofd.FileName;
@@ -67,7 +66,5 @@ namespace Attech.FlightMonitor.UI.Controls
             if (FileChanged != null)
                 FileChanged(this, e);
         }
-
-
     }
 }

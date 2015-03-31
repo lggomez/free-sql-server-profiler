@@ -91,7 +91,7 @@ namespace Attech.FlightMonitor.UI.Controls
         protected override void OnPaint(PaintEventArgs e)
         {
             //Draw backcolor
-            if(_useGradientBackColor)
+            if (_useGradientBackColor)
             {
                 LinearGradientBrush brush = new LinearGradientBrush(e.ClipRectangle, _gradientColor1, _gradientColor2, _gradientMode);
                 e.Graphics.FillRectangle(brush, e.ClipRectangle);

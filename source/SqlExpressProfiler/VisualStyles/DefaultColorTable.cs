@@ -18,12 +18,12 @@ namespace AnfiniL.SqlExpressProfiler.VisualStyles
         {
             if (renderer == null)
                 renderer = new ToolStripProfessionalRenderer(new DefaultColorTable());
+
             return renderer;
         }
         
         protected DefaultColorTable()
         {
-            
         }
 
         internal Color FromKnownColor(KnownColors color)
@@ -78,6 +78,7 @@ namespace AnfiniL.SqlExpressProfiler.VisualStyles
                 {
                     return FromKnownColor(KnownColors.ButtonCheckedGradientBegin);
                 }
+
                 return base.ButtonCheckedGradientBegin;
             }
         }
@@ -90,6 +91,7 @@ namespace AnfiniL.SqlExpressProfiler.VisualStyles
                 {
                     return FromKnownColor(KnownColors.ButtonCheckedGradientEnd);
                 }
+
                 return base.ButtonCheckedGradientEnd;
             }
         }
@@ -102,6 +104,7 @@ namespace AnfiniL.SqlExpressProfiler.VisualStyles
                 {
                     return FromKnownColor(KnownColors.ButtonCheckedGradientMiddle);
                 }
+
                 return base.ButtonCheckedGradientMiddle;
             }
         }
@@ -115,6 +118,7 @@ namespace AnfiniL.SqlExpressProfiler.VisualStyles
                 {
                     return FromKnownColor(KnownColors.ButtonPressedBorder);
                 }
+
                 return base.ButtonPressedBorder;
             }
         }
@@ -127,6 +131,7 @@ namespace AnfiniL.SqlExpressProfiler.VisualStyles
                 {
                     return FromKnownColor(KnownColors.ButtonPressedGradientBegin);
                 }
+
                 return base.ButtonPressedGradientBegin;
             }
         }
@@ -139,10 +144,10 @@ namespace AnfiniL.SqlExpressProfiler.VisualStyles
                 {
                     return FromKnownColor(KnownColors.ButtonPressedGradientEnd);
                 }
+
                 return base.ButtonPressedGradientEnd;
             }
         }
-
 
         public override Color ButtonPressedGradientMiddle
         {
@@ -152,6 +157,7 @@ namespace AnfiniL.SqlExpressProfiler.VisualStyles
                 {
                     return FromKnownColor(KnownColors.ButtonPressedGradientMiddle);
                 }
+
                 return base.ButtonPressedGradientMiddle;
             }
         }
@@ -164,6 +170,7 @@ namespace AnfiniL.SqlExpressProfiler.VisualStyles
                 {
                     return FromKnownColor(KnownColors.ButtonPressedBorder);
                 }
+
                 return base.ButtonSelectedBorder;
             }
         }
@@ -177,6 +184,7 @@ namespace AnfiniL.SqlExpressProfiler.VisualStyles
                 {
                     return FromKnownColor(KnownColors.ButtonSelectedGradientBegin);
                 }
+
                 return base.ButtonSelectedGradientBegin;
             }
         }
@@ -189,6 +197,7 @@ namespace AnfiniL.SqlExpressProfiler.VisualStyles
                 {
                     return FromKnownColor(KnownColors.ButtonSelectedGradientEnd);
                 }
+
                 return base.ButtonSelectedGradientEnd;
             }
         }
@@ -201,6 +210,7 @@ namespace AnfiniL.SqlExpressProfiler.VisualStyles
                 {
                     return FromKnownColor(KnownColors.ButtonSelectedGradientMiddle);
                 }
+
                 return base.ButtonSelectedGradientMiddle;
             }
         }
@@ -213,6 +223,7 @@ namespace AnfiniL.SqlExpressProfiler.VisualStyles
                 {
                     return FromKnownColor(KnownColors.CheckBackground);
                 }
+
                 return base.CheckBackground;
             }
         }
@@ -225,6 +236,7 @@ namespace AnfiniL.SqlExpressProfiler.VisualStyles
                 {
                     return FromKnownColor(KnownColors.CheckBackgroundMouseOver);
                 }
+
                 return base.CheckPressedBackground;
             }
         }
@@ -237,6 +249,7 @@ namespace AnfiniL.SqlExpressProfiler.VisualStyles
                 {
                     return FromKnownColor(KnownColors.CheckBackgroundMouseOver);
                 }
+
                 return base.CheckSelectedBackground;
             }
         }
@@ -256,6 +269,7 @@ namespace AnfiniL.SqlExpressProfiler.VisualStyles
                     tanRGB = new Dictionary<KnownColors, Color>((int) KnownColors.LastKnownColor);
                     InitTanLunaColors(ref tanRGB);
                 }
+
                 return tanRGB;
             }
         }
@@ -268,6 +282,7 @@ namespace AnfiniL.SqlExpressProfiler.VisualStyles
                 {
                     return FromKnownColor(KnownColors.GripDark);
                 }
+
                 return base.GripDark;
             }
         }
@@ -280,6 +295,7 @@ namespace AnfiniL.SqlExpressProfiler.VisualStyles
                 {
                     return FromKnownColor(KnownColors.GripLight);
                 }
+
                 return base.GripLight;
             }
         }
@@ -292,6 +308,7 @@ namespace AnfiniL.SqlExpressProfiler.VisualStyles
                 {
                     return FromKnownColor(KnownColors.ImageMarginGradientBegin);
                 }
+
                 return base.ImageMarginGradientBegin;
             }
         }
@@ -304,6 +321,7 @@ namespace AnfiniL.SqlExpressProfiler.VisualStyles
                 {
                     return FromKnownColor(KnownColors.ImageMarginGradientEnd);
                 }
+
                 return base.ImageMarginGradientEnd;
             }
         }
@@ -316,6 +334,7 @@ namespace AnfiniL.SqlExpressProfiler.VisualStyles
                 {
                     return FromKnownColor(KnownColors.ImageMarginGradientMiddle);
                 }
+
                 return base.ImageMarginGradientMiddle;
             }
         }
@@ -328,6 +347,7 @@ namespace AnfiniL.SqlExpressProfiler.VisualStyles
                 {
                     return FromKnownColor(KnownColors.ImageMarginRevealedGradientBegin);
                 }
+
                 return base.ImageMarginRevealedGradientBegin;
             }
         }
@@ -340,6 +360,7 @@ namespace AnfiniL.SqlExpressProfiler.VisualStyles
                 {
                     return FromKnownColor(KnownColors.ImageMarginRevealedGradientEnd);
                 }
+
                 return base.ImageMarginRevealedGradientEnd;
             }
         }
@@ -352,6 +373,7 @@ namespace AnfiniL.SqlExpressProfiler.VisualStyles
                 {
                     return FromKnownColor(KnownColors.ImageMarginRevealedGradientMiddle);
                 }
+
                 return base.ImageMarginRevealedGradientMiddle;
             }
         }
@@ -364,6 +386,7 @@ namespace AnfiniL.SqlExpressProfiler.VisualStyles
                 {
                     return FromKnownColor(KnownColors.MenuBorder);
                 }
+
                 return base.MenuItemBorder;
             }
         }
@@ -377,6 +400,7 @@ namespace AnfiniL.SqlExpressProfiler.VisualStyles
                 {
                     return FromKnownColor(KnownColors.MenuItemBorder);
                 }
+
                 return base.MenuItemBorder;
             }
         }
@@ -389,6 +413,7 @@ namespace AnfiniL.SqlExpressProfiler.VisualStyles
                 {
                     return FromKnownColor(KnownColors.MenuItemPressedGradientBegin);
                 }
+
                 return base.MenuItemPressedGradientBegin;
             }
         }
@@ -401,6 +426,7 @@ namespace AnfiniL.SqlExpressProfiler.VisualStyles
                 {
                     return FromKnownColor(KnownColors.MenuItemPressedGradientEnd);
                 }
+
                 return base.MenuItemPressedGradientEnd;
             }
         }
@@ -413,6 +439,7 @@ namespace AnfiniL.SqlExpressProfiler.VisualStyles
                 {
                     return FromKnownColor(KnownColors.ImageMarginRevealedGradientMiddle);
                 }
+
                 return base.MenuItemPressedGradientMiddle;
             }
         }
@@ -425,6 +452,7 @@ namespace AnfiniL.SqlExpressProfiler.VisualStyles
                 {
                     return FromKnownColor(KnownColors.MenuItemSelected);
                 }
+
                 return base.MenuItemSelected;
             }
         }
@@ -437,6 +465,7 @@ namespace AnfiniL.SqlExpressProfiler.VisualStyles
                 {
                     return FromKnownColor(KnownColors.ButtonSelectedGradientBegin);
                 }
+
                 return base.MenuItemSelectedGradientBegin;
             }
         }
@@ -449,6 +478,7 @@ namespace AnfiniL.SqlExpressProfiler.VisualStyles
                 {
                     return FromKnownColor(KnownColors.ButtonSelectedGradientEnd);
                 }
+
                 return base.MenuItemSelectedGradientEnd;
             }
         }
@@ -462,6 +492,7 @@ namespace AnfiniL.SqlExpressProfiler.VisualStyles
                 {
                     return FromKnownColor(KnownColors.MenuStripGradientBegin);
                 }
+
                 return base.MenuStripGradientBegin;
             }
         }
@@ -474,6 +505,7 @@ namespace AnfiniL.SqlExpressProfiler.VisualStyles
                 {
                     return FromKnownColor(KnownColors.MenuStripGradientEnd);
                 }
+
                 return base.MenuStripGradientEnd;
             }
         }
@@ -486,6 +518,7 @@ namespace AnfiniL.SqlExpressProfiler.VisualStyles
                 {
                     return FromKnownColor(KnownColors.OverflowButtonGradientBegin);
                 }
+
                 return base.OverflowButtonGradientBegin;
             }
         }
@@ -498,6 +531,7 @@ namespace AnfiniL.SqlExpressProfiler.VisualStyles
                 {
                     return FromKnownColor(KnownColors.OverflowButtonGradientEnd);
                 }
+
                 return base.OverflowButtonGradientEnd;
             }
         }
@@ -510,6 +544,7 @@ namespace AnfiniL.SqlExpressProfiler.VisualStyles
                 {
                     return FromKnownColor(KnownColors.OverflowButtonGradientMiddle);
                 }
+
                 return base.OverflowButtonGradientMiddle;
             }
         }
@@ -523,6 +558,7 @@ namespace AnfiniL.SqlExpressProfiler.VisualStyles
                 {
                     return FromKnownColor(KnownColors.MenuStripGradientBegin);
                 }
+
                 return base.RaftingContainerGradientBegin;
             }
         }
@@ -535,6 +571,7 @@ namespace AnfiniL.SqlExpressProfiler.VisualStyles
                 {
                     return FromKnownColor(KnownColors.MenuStripGradientEnd);
                 }
+
                 return base.RaftingContainerGradientEnd;
             }
         }
@@ -548,6 +585,7 @@ namespace AnfiniL.SqlExpressProfiler.VisualStyles
                 {
                     return FromKnownColor(KnownColors.SeparatorDark);
                 }
+
                 return base.SeparatorDark;
             }
         }
@@ -560,6 +598,7 @@ namespace AnfiniL.SqlExpressProfiler.VisualStyles
                 {
                     return FromKnownColor(KnownColors.SeparatorLight);
                 }
+
                 return base.SeparatorLight;
             }
         }
@@ -572,6 +611,7 @@ namespace AnfiniL.SqlExpressProfiler.VisualStyles
                 {
                     return FromKnownColor(KnownColors.ToolStripBorder);
                 }
+
                 return base.ToolStripBorder;
             }
         }
@@ -585,6 +625,7 @@ namespace AnfiniL.SqlExpressProfiler.VisualStyles
                 {
                     return FromKnownColor(KnownColors.ToolStripDropDownBackground);
                 }
+
                 return base.ToolStripDropDownBackground;
             }
         }
@@ -597,6 +638,7 @@ namespace AnfiniL.SqlExpressProfiler.VisualStyles
                 {
                     return FromKnownColor(KnownColors.ImageMarginGradientBegin);
                 }
+
                 return base.ToolStripGradientBegin;
             }
         }
@@ -609,6 +651,7 @@ namespace AnfiniL.SqlExpressProfiler.VisualStyles
                 {
                     return FromKnownColor(KnownColors.ImageMarginGradientEnd);
                 }
+
                 return base.ToolStripGradientEnd;
             }
         }
@@ -621,6 +664,7 @@ namespace AnfiniL.SqlExpressProfiler.VisualStyles
                 {
                     return FromKnownColor(KnownColors.ImageMarginGradientMiddle);
                 }
+
                 return base.ToolStripGradientMiddle;
             }
         }
@@ -631,11 +675,13 @@ namespace AnfiniL.SqlExpressProfiler.VisualStyles
             {
                 bool flag1 = !DisplayInformation.IsLunaTheme ||
                              ((ColorScheme != "HomeStead") && (ColorScheme != "NormalColor"));
+
                 if (flag1 && (tanRGB != null))
                 {
                     tanRGB.Clear();
                     tanRGB = null;
                 }
+
                 return flag1;
             }
         }
@@ -661,6 +707,7 @@ namespace AnfiniL.SqlExpressProfiler.VisualStyles
             private static void SetScheme()
             {
                 isLunaTheme = false;
+
                 if (VisualStyleRenderer.IsSupported)
                 {
                     colorScheme = VisualStyleInformation.ColorScheme;
@@ -669,6 +716,7 @@ namespace AnfiniL.SqlExpressProfiler.VisualStyles
                     {
                         return;
                     }
+
                     StringBuilder builder1 = new StringBuilder(0x200);
                     GetCurrentThemeName(builder1, builder1.Capacity, null, 0, null, 0);
                     string text1 = builder1.ToString();

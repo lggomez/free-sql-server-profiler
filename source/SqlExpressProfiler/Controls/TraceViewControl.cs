@@ -109,7 +109,7 @@ namespace AnfiniL.SqlExpressProfiler.Controls
         {
             var xRow = x as DataGridViewRow;
             var yRow = y as DataGridViewRow;
-            if(xRow == null || yRow == null) return 0;
+            if (xRow == null || yRow == null) return 0;
 
             return xRow.Index.CompareTo(yRow.Index);
         }

@@ -6,61 +6,43 @@ namespace AnfiniL.SqlServerTools.Data
 {
     public class FilterProperties
     {
-        private TraceField _field;
-        private ComparisonOperator _op;
-        private string _value;
-
         public FilterProperties(TraceField field, ComparisonOperator op, string value)
         {
-            _field = field;
-            _op = op;
-            _value = value;
-        }
-        
-        public TraceField Field
-        {
-            get { return _field; }
-            set { _field = value; }
+            Field = field;
+            Operator = op;
+            Value = value;
         }
 
-        public ComparisonOperator Operator
-        {
-            get { return _op; }
-            set { _op = value; }
-        }
+        public TraceField Field { get; private set; }
 
-        public string Value
-        {
-            get { return _value; }
-            set { _value = value; }
-        }
+        public ComparisonOperator Operator { get; private set; }
+
+        public string Value { get; set; }
 
         public object TypedValue
         {
             get
             {
-                if (Array.IndexOf(IntFields, _field) > -1 )
+                if (Array.IndexOf(IntFields, Field) > -1 )
                 {
                     int value;
-                    if (int.TryParse(_value, out value))
+                    if (int.TryParse(Value, out value))
                         return value;
                     else
                         return 0;
-                } 
-                else if (Array.IndexOf(LongFields, _field) > -1)
+                }
+                else if (Array.IndexOf(LongFields, Field) > -1)
                 {
                     long value;
-                    if (long.TryParse(_value, out value))
-                        return value;
-                    else
-                        return 0;
-                } 
-                if (Array.IndexOf(VarBinaryFields, _field) > -1)
+
+                    return long.TryParse(Value, out value) ? value : 0;
+                }
+                if (Array.IndexOf(VarBinaryFields, Field) > -1)
                 {
-                    return Encoding.ASCII.GetBytes(_value);
+                    return Encoding.ASCII.GetBytes(Value);
                 }
                 else
-                    return _value;
+                    return Value;
             }
         }
 
@@ -81,10 +63,10 @@ namespace AnfiniL.SqlServerTools.Data
                                          };
 
         private static readonly TraceField[] VarBinaryFields = {
-                                                            TraceField.LoginSID
+                                            TraceField.LoginSID
                                          };
 
-        public static TraceField[] nonFilterableFields =
+        public static readonly TraceField[] nonFilterableFields =
             {
                 TraceField.BinaryData,
                 TraceField.EventClass,

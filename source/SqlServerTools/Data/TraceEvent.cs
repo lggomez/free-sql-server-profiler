@@ -1,5 +1,6 @@
 namespace SqlServerTools.Data
 {
+    // ReSharper disable InconsistentNaming
     public enum TraceEvent
     {
         RPCCompleted      = 10,
@@ -40,6 +41,5 @@ namespace SqlServerTools.Data
         TMRollbackTranCompleted = 188,
         TMSaveTranstarting      = 191,
         TMSaveTrancompleted     = 192
-        
     }
 }

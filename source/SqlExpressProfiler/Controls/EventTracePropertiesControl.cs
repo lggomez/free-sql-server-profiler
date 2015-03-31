@@ -11,11 +11,13 @@ namespace AnfiniL.SqlExpressProfiler.Controls
     public partial class EventTracePropertiesControl : UserControl
     {
         private DataTable _source;
+
         public EventTracePropertiesControl()
         {
             InitializeComponent();
 
             if (Program.InDesignMode) return;
+
             InitDataGrid();
         }
         
@@ -27,8 +29,8 @@ namespace AnfiniL.SqlExpressProfiler.Controls
                 var events = new List<Pair<int, int>>();
                 foreach(DataRow dr in _source.Rows)
                 {
-                    
                     var fields = new List<TraceField>();
+
                     for(int i=2; i<_source.Columns.Count; i++)
                     {
                         if (!Convert.IsDBNull(dr[i]) && (bool)dr[i])
@@ -38,11 +40,10 @@ namespace AnfiniL.SqlExpressProfiler.Controls
                         }
                     }
                     
-                    if(fields.Count == 0) continue;
+                    if (fields.Count == 0) continue;
                     
-                    TraceEventProperties p = new TraceEventProperties();
-                    p.Event = (TraceEvent)dr["Events"];
-                    p.Fields = fields.ToArray();
+                    TraceEventProperties p = new TraceEventProperties
+                                                 { Event = (TraceEvent) dr["Events"], Fields = fields.ToArray() };
                     list.Add(p);
                 }
 
@@ -54,9 +55,6 @@ namespace AnfiniL.SqlExpressProfiler.Controls
 
         private void EventTracePropertiesControl_Load(object sender, EventArgs e)
         {
-            
-
-            
         }
         
         private void InitDataGrid()
@@ -89,7 +87,7 @@ namespace AnfiniL.SqlExpressProfiler.Controls
 
         private void dataGridView_CurrentCellDirtyStateChanged(object sender, EventArgs e)
         {
-            if(dataGridView.CurrentCell.ColumnIndex == 1)
+            if (dataGridView.CurrentCell.ColumnIndex == 1)
             {
                 //select all fields
                 DataRowView dr = dataGridView.Rows[dataGridView.CurrentCell.RowIndex].DataBoundItem as DataRowView;
@@ -108,10 +106,12 @@ namespace AnfiniL.SqlExpressProfiler.Controls
         private void selectUnSelectCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             for(int i=0; i< _source.Rows.Count; i++)
-                for(int j=1; j< _source.Columns.Count; j++)
+            {
+                for (int j = 1; j < _source.Columns.Count; j++)
                 {
                     _source.Rows[i][j] = selectUnSelectCheckBox.Checked;
                 }
+            }
         }
     }
 }

@@ -24,15 +24,18 @@ namespace AnfiniL.SqlExpressProfiler
         public static Version GetLatestVersion()
         {
             List<Version> versions = new List<Version>();
+
             try
             {
                 HttpWebRequest req =
                     (HttpWebRequest) WebRequest.Create("http://code.google.com/p/sqlexpressprofiler/downloads/list");
                 HttpWebResponse response = (HttpWebResponse) req.GetResponse();
+
                 using (StreamReader reader = new StreamReader(response.GetResponseStream()))
                 {
                     string page = reader.ReadToEnd();
                     MatchCollection matches = VersionRegex.Matches(page);
+
                     foreach (Match match in matches)
                     {
                         Version v = new Version(match.Groups["Version"].Value);
@@ -44,7 +47,9 @@ namespace AnfiniL.SqlExpressProfiler
             {
                 return null;
             }
+
             versions.Sort();
+
             if (versions.Count == 0)
                 return new Version("0.0.0.0");
             else

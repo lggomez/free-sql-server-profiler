@@ -103,12 +103,13 @@ namespace AnfiniL.SqlExpressProfiler.Controls
 
         private void runButton_Click(object sender, EventArgs e)
         {
-            if(!generalTracePropertiesControl.TestConnection())
+            if (!generalTracePropertiesControl.TestConnection())
                 return;
 
             Settings.Default.Save();
                 
             TraceEventProperties[] events = this.EventProperties;
+
             if (events.Length == 0)
             {
                 MessageBox.Show("Please specify events and data columns.", "Error", MessageBoxButtons.OK,
@@ -116,7 +117,7 @@ namespace AnfiniL.SqlExpressProfiler.Controls
                 return;
             }
 
-            this.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.DialogResult = DialogResult.OK;
             this.Close();
         }
     }

@@ -13,12 +13,14 @@ namespace AnfiniL.SqlServerTools.Impl
 
         public string[] GetServerList()
         {
-            List<string> result = new List<string>();
-            foreach(DataRow row in SmoApplication.EnumAvailableSqlServers().Rows)
+            string[] result = new string[SmoApplication.EnumAvailableSqlServers().Rows.Count];
+
+            for (int i = 0; i < SmoApplication.EnumAvailableSqlServers().Rows.Count; i++)
             {
-                result.Add(row["Name"] as string);
+                result[i] = SmoApplication.EnumAvailableSqlServers().Rows[i]["Name"] as string;
             }
-            return result.ToArray();
+
+            return result;
         }
 
         public bool TestConnection(string serverName, string userName, string password, out string error)
@@ -42,7 +44,8 @@ namespace AnfiniL.SqlServerTools.Impl
             {
                 sc.ConnectTimeout = 20;//20 seconds
                 sc.Connect();
-                if(sc.ServerVersion.Major < 9)
+
+                if (sc.ServerVersion.Major < 9)
                 {
                     error = "Unable to profile SQL Server with version less than 9.0 (SQL Server 2005)";
                     return false;

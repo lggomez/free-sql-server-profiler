@@ -17,13 +17,14 @@ namespace Attech.FlightMonitor.UI.Controls
 
         private Pen _pen;
         private Brush _brush;
-        private int _OFFSET = 5;
+        private const int _OFFSET = 5;
+
         protected override void OnPaint(PaintEventArgs e)
         {
-            if(_pen == null)
+            if (_pen == null)
                 _pen = new Pen(VisualStyleUtils.GetColor(VisualStyleElement.Button.GroupBox.Disabled, ColorProperty.EdgeShadowColor, Color.Gray), 1);
 
-            if(_brush == null)
+            if (_brush == null)
                 _brush = new SolidBrush(VisualStyleUtils.GetColor(VisualStyleElement.Button.GroupBox.Normal, ColorProperty.TextColor, SystemColors.ControlText));
 
             float textSize = e.Graphics.MeasureString(this.Text, this.Font).Width;

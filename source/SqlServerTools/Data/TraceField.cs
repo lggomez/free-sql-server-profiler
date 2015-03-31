@@ -1,5 +1,6 @@
 namespace SqlServerTools.Data
 {
+    // ReSharper disable InconsistentNaming
     public enum TraceField
     {
         TextData        = 1,

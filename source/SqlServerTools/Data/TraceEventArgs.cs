@@ -5,8 +5,6 @@ namespace SqlServerTools.Data
 {
     public class TraceEventArgs : EventArgs
     {
-        private DataTable eventsTable;
-
         public TraceEventArgs()
             : base()
         {
@@ -15,15 +13,9 @@ namespace SqlServerTools.Data
         public TraceEventArgs(DataTable eventsTable)
             : base()
         {
-            this.eventsTable = eventsTable;
+            this.EventsTable = eventsTable;
         }
 
-        public DataTable EventsTable
-        {
-            get
-            {
-                return eventsTable;
-            }
-        }
+        public DataTable EventsTable { get; private set; }
     }
 }

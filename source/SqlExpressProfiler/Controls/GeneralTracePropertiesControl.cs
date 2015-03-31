@@ -17,7 +17,7 @@ namespace AnfiniL.SqlExpressProfiler.Controls
 
         private void GeneralTracePropertiesControl_Load(object sender, EventArgs e)
         {
-            if(Program.InDesignMode) 
+            if (Program.InDesignMode) 
                 return;
             
             _serverConnector = ToolsFactory.Instance.CreateServerConnector();
@@ -30,7 +30,7 @@ namespace AnfiniL.SqlExpressProfiler.Controls
         private void AddPasswordBindingToSettings()
         {
             if (savePasswordCheckBox.Checked)
-                passwordTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::AnfiniL.SqlExpressProfiler.Properties.Settings.Default, "Password", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+                passwordTextBox.DataBindings.Add(new Binding("Text", Settings.Default, "Password", true, DataSourceUpdateMode.OnPropertyChanged));
             else
             {
                 Settings.Default.Password = string.Empty;
@@ -58,7 +58,7 @@ namespace AnfiniL.SqlExpressProfiler.Controls
         {
             get
             {
-                if(WindowsAuthentication)
+                if (WindowsAuthentication)
                     return string.Empty;
                     
                 return userNameComboBox.Text;
@@ -116,23 +116,21 @@ namespace AnfiniL.SqlExpressProfiler.Controls
 
         private void fileSelectorControl1_Load(object sender, EventArgs e)
         {
-
         }
 
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
         {
-
         }
 
         private void serverNameComboBox_DropDown(object sender, EventArgs e)
         {
-            if(serverNameComboBox.DataSource == null)
+            if (serverNameComboBox.DataSource == null)
                 LoadServerList();
         }
 
         private void testConnectionButton_Click(object sender, EventArgs e)
         {
-            if(TestConnection())
+            if (TestConnection())
                  MessageBox.Show("Successfully connected to server.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 

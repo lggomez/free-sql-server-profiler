@@ -7,22 +7,24 @@ namespace AnfiniL.SqlExpressProfiler.Controls
     {
         public static DataGridViewColumn NewTextBoxColumn(string name, string propertyName, bool readOnly)
         {
-            DataGridViewTextBoxColumn c = new DataGridViewTextBoxColumn();
-            c.DataPropertyName = propertyName;
-            c.Name = name;
-            c.ReadOnly = readOnly;
+            DataGridViewTextBoxColumn c = new DataGridViewTextBoxColumn
+                                              { DataPropertyName = propertyName, Name = name, ReadOnly = readOnly };
+
             return c;
         }
 
         public static DataGridViewColumn NewComboBoxColumn(string name, string propertyName, bool readOnly, object dataSource, string displayMember)
         {
-            DataGridViewComboBoxColumn c = new DataGridViewComboBoxColumn();
-            c.DisplayMember = displayMember;
-            c.DataSource = dataSource;
-            c.DisplayStyle = DataGridViewComboBoxDisplayStyle.DropDownButton;
-            c.DataPropertyName = propertyName;
-            c.Name = name;
-            c.ReadOnly = readOnly;           
+            DataGridViewComboBoxColumn c = new DataGridViewComboBoxColumn
+                                               {
+                                                   DisplayMember = displayMember,
+                                                   DataSource = dataSource,
+                                                   DisplayStyle = DataGridViewComboBoxDisplayStyle.DropDownButton,
+                                                   DataPropertyName = propertyName,
+                                                   Name = name,
+                                                   ReadOnly = readOnly
+                                               };
+
             return c;
         }
 

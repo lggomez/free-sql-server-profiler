@@ -35,17 +35,14 @@ namespace AnfiniL.SqlExpressProfiler.Logic
             
             foreach(FilterProperties f in filters)
             {
-                if(f.CheckFilter())
+                if (f.CheckFilter())
                     profiler.AddTraceFilter(f.Field, LogicalOperator.AND, f.Operator, f.TypedValue);
             }
 
             profiler.TraceEvent += profiler_TraceEvent;
-            
             profiler.Start();
             
-            Trace trace = new Trace(profiler, new DataTable(), traceName);
-            trace.TraceEvents = events;
-            trace.TraceFilters = filters;
+            Trace trace = new Trace(profiler, new DataTable(), traceName) { TraceEvents = events, TraceFilters = filters };
             _traces.Add(profiler, trace);
 
             return trace;
@@ -66,8 +63,10 @@ namespace AnfiniL.SqlExpressProfiler.Logic
         {
             string dir = Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData);
             string appPath = Path.Combine(dir, "SqlExpressProfiler");
+
             if (!Directory.Exists(appPath))
                 Directory.CreateDirectory(appPath);
+
             return appPath;
         }
 
@@ -85,14 +84,14 @@ namespace AnfiniL.SqlExpressProfiler.Logic
 
         public Trace RunProfiler(IProfiler profiler)
         {
-            if(profiler.Status == TraceStatus.Started)
+            if (profiler.Status == TraceStatus.Started)
                 return null;
                 
-            if(profiler.Status == TraceStatus.Stopped)
+            if (profiler.Status == TraceStatus.Stopped)
                 profiler.Start();
                 
             Trace existingTrace = _traces[profiler];
-            if(existingTrace == null) return null;
+            if (existingTrace == null) return null;
 
             DeleteProfiler(profiler);
                 
@@ -110,11 +109,10 @@ namespace AnfiniL.SqlExpressProfiler.Logic
             }
 
             newProfiler.TraceEvent += profiler_TraceEvent;
-
             newProfiler.Start();
 
-            Trace trace = new Trace(newProfiler, existingTrace.DataTable, existingTrace.TraceName);
-            trace.TraceEvents = existingTrace.TraceEvents;
+            Trace trace = new Trace(newProfiler, existingTrace.DataTable, existingTrace.TraceName)
+                              { TraceEvents = existingTrace.TraceEvents };
             _traces.Add(newProfiler, trace);
             
             return trace;
@@ -144,7 +142,8 @@ namespace AnfiniL.SqlExpressProfiler.Logic
             foreach(var p in Settings.Default.TraceEvents.Split(';'))
             {
                 var tokens = p.Split(',');
-                if(tokens.Length == 2)
+
+                if (tokens.Length == 2)
                     yield return Pair.New(Convert.ToInt32(tokens[0]), Convert.ToInt32(tokens[1]));
             }
         }
@@ -152,6 +151,7 @@ namespace AnfiniL.SqlExpressProfiler.Logic
         public static void SetUserTraceEvents(IEnumerable<Pair<int, int>> events)
         {
             var builder = new StringBuilder();
+
             foreach(var e in events)
             {
                 builder.AppendFormat("{0},{1};", e.A, e.B);
